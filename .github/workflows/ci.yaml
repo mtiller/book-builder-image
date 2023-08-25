@@ -1,10 +1,12 @@
 name: ci
 
+# On every commit to master...
 on:
   push:
     branches:
       - "master"
 
+# Variables that allow us to construct the name of the Docker image
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -17,18 +19,24 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
+      # Note the use of buildx, this allows for building of multi-platform images
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+      # Here we are logging into the Github container registry (because that is where
+      # we will store the images we are building)
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      # This is where the actual work gets done
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
           platforms: linux/amd64,linux/arm64/v8
-          # push: true
-          tags: user/app:latest
+          push: true
+          # Update this tag as needed.  I decided not to go the route of
+          # using git tags because it just seemed overly complicated.
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v0.1.0
