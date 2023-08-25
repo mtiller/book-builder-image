@@ -10,6 +10,9 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  # Update this tag as needed.  I decided not to go the route of
+  # using git tags because it just seemed overly complicated.
+  TAG: latest
 
 jobs:
   docker:
@@ -37,12 +40,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64/v8
           push: true
-          tags: ghcr.io/mtiller/book-builder-image:latest
-      # - name: Push image to GHCR
-      #   # Update this tag as needed.  I decided not to go the route of
-      #   # using git tags because it just seemed overly complicated.
-      #   run: |
-      #     docker buildx imagetools create \
-      #       --tag ghcr.io/mtiller/book-builder-image:latest \
-      #       --tag ghcr.io/mtiller/book-builder-image:v0.1.0 \
-      #       ghcr.io/mtiller/book-builder-image:latest
+          tags: ghcr.io/mtiller/book-builder-image:{{ env.TAG }}
