@@ -15,3 +15,9 @@ RUN go install -v golang.org/x/tools/gopls@latest
 RUN go install -v github.com/go-delve/delve/cmd/dlv@latest
 
 RUN pip install jinja2 matplotlib scipy sphinx dvc[all]
+
+# Create a user for VS Code dev containers (but we don't switch to it here)
+RUN useradd -m  -s /bin/bash ubuntu
+# RUn mkdir /etc/sudoers.d
+RUN usermod -aG sudo ubuntu && echo "ubuntu ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/ubuntu
+RUN chmod 0440 /etc/sudoers.d/ubuntu

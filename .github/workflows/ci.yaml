@@ -12,7 +12,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
   # Update this tag as needed.  I decided not to go the route of
   # using git tags because it just seemed overly complicated.
-  TAG: latest
+  TAG: v0.1.0
 
 jobs:
   docker:
