@@ -5,7 +5,7 @@ FROM openmodelica/openmodelica:v1.20.0-minimal
 RUN rm /etc/apt/sources.list.d/openmodelica.list
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
-    apt-get install -y sudo python3 git python3-pip  latexmk texlive-xetex texlive-fonts-extra-links xindy texlive-latex-extra nodejs golang-go language-pack-en && \
+    apt-get install -y sudo python3 git python3-pip librsvg2-bin latexmk texlive-xetex texlive-fonts-extra-links xindy texlive-latex-extra nodejs golang-go language-pack-en && \
  	rm -rf /var/lib/apt/lists/*
 
 # These are tools used by the Go language extension for VS Code
