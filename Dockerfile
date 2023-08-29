@@ -14,7 +14,7 @@ RUN go install -v github.com/ramya-rao-a/go-outline@v0.0.0-20210608161538-9736a4
 RUN go install -v golang.org/x/tools/gopls@latest
 RUN go install -v github.com/go-delve/delve/cmd/dlv@latest
 
-RUN pip install jinja2 matplotlib scipy sphinx dvc[all]
+RUN pip install jinja2 matplotlib scipy sphinx dvc[all] python-gettext
 
 RUN npm install --global yarn
 
