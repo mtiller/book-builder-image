@@ -5,7 +5,7 @@ FROM openmodelica/openmodelica:v1.20.0-minimal
 RUN rm /etc/apt/sources.list.d/openmodelica.list
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
-    apt-get install -y curl vi sudo python3 git python3-pip librsvg2-bin latexmk texlive-xetex texlive-fonts-extra-links xindy texlive-latex-extra golang-go language-pack-en && \
+    apt-get install -y curl vim sudo python3 git python3-pip librsvg2-bin latexmk texlive-xetex texlive-fonts-extra-links xindy texlive-latex-extra golang-go language-pack-en && \
  	rm -rf /var/lib/apt/lists/*
 
 RUN curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
