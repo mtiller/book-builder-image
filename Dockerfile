@@ -9,7 +9,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && curl -L https://deb.nodesource.com/setup_18.x | bash \
     && apt-get update -yq \
     && apt-get install -yq nodejs \
- 	rm -rf /var/lib/apt/lists/*
+ 	&& rm -rf /var/lib/apt/lists/*
 
 # These are tools used by the Go language extension for VS Code
 RUN go install -v github.com/mdempsky/gocode@v0.0.0-20200405233807-4acdcbdea79d
