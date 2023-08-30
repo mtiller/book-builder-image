@@ -8,7 +8,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y curl gnupg ca-certificates vim sudo python3 git python3-pip librsvg2-bin latexmk texlive-xetex texlive-fonts-extra-links xindy texlive-latex-extra golang-go language-pack-en \
     && curl -L https://deb.nodesource.com/setup_18.x | bash \
     && apt-get update -yq \
-    && apt-get install -yq nodejs
+    && apt-get install -yq nodejs \
  	rm -rf /var/lib/apt/lists/*
 
 # These are tools used by the Go language extension for VS Code
