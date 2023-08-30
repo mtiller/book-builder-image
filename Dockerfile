@@ -4,11 +4,13 @@ FROM openmodelica/openmodelica:v1.20.0-minimal
 # This is currently preventing apt-get updates from working
 RUN rm /etc/apt/sources.list.d/openmodelica.list
 
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
+    apt-get install -y curl vi sudo python3 git python3-pip librsvg2-bin latexmk texlive-xetex texlive-fonts-extra-links xindy texlive-latex-extra golang-go language-pack-en && \
+ 	rm -rf /var/lib/apt/lists/*
+
 RUN curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
-    apt-get install -y sudo python3 git python3-pip librsvg2-bin latexmk texlive-xetex texlive-fonts-extra-links xindy texlive-latex-extra nodejs golang-go language-pack-en npm && \
- 	rm -rf /var/lib/apt/lists/*
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y nodejs npm && rm -rf /var/lib/apt/lists/*
 
 # These are tools used by the Go language extension for VS Code
 RUN go install -v github.com/mdempsky/gocode@v0.0.0-20200405233807-4acdcbdea79d
