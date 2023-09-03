@@ -16,6 +16,7 @@ RUN go install -v github.com/mdempsky/gocode@v0.0.0-20200405233807-4acdcbdea79d
 RUN go install -v github.com/ramya-rao-a/go-outline@v0.0.0-20210608161538-9736a4bde949
 RUN go install -v golang.org/x/tools/gopls@latest
 RUN go install -v github.com/go-delve/delve/cmd/dlv@latest
+RUN go install github.com/joho/godotenv/cmd/godotenv@latest
 
 RUN pip install jinja2 matplotlib scipy sphinx dvc[all] python-gettext
 
